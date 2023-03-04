@@ -26,6 +26,14 @@ class TreeNode:
         for child in self.child:
             child.print_tree(level + 1)
 
+    def print_by_level(self, level=0):
+        node_level = self.get_level()
+        if node_level > level:
+            return
+        print('{0}{1}'.format(' ' * node_level * 2 + '|__ ', self.name))
+        for child in self.child:
+            child.print_by_level(level + 1)
+
 
 def build_tree():
     root = TreeNode('Electronics')
@@ -45,4 +53,4 @@ def build_tree():
 
 if __name__ == "__main__":
     root = build_tree()
-    root.print_tree(5)
+    root.print_by_level(1)
